@@ -1,24 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Инициализация иконок Lucide
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    // 1. Иконки
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // 2. Плавный скролл (Lenis)
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-    });
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
+    // 2. Плавный скролл
+    const lenis = new Lenis();
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
 
-    // 3. Мобильное меню (Безопасно)
+    // 3. Мобильное меню
     const burger = document.getElementById('burgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-cta');
 
     if (burger && mobileMenu) {
         const toggleMenu = () => {
@@ -26,63 +18,57 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         };
-
         burger.addEventListener('click', toggleMenu);
         mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
     }
 
-    // 4. GSAP Анимации для Hero
+    // 4. GSAP Hero Анимация (С фиксом слов)
     if (document.querySelector('.hero__title')) {
-        const title = new SplitType('.hero__title', { types: 'chars' });
-        gsap.from(title.chars, {
+        const heroTitle = new SplitType('.hero__title', { types: 'words,chars' });
+        gsap.from(heroTitle.chars, {
             opacity: 0,
-            y: 50,
+            y: 30,
             stagger: 0.02,
             duration: 1,
-            ease: "power4.out"
+            ease: "power3.out"
         });
     }
 
-    // 5. Валидация формы и математическая капча
-    const contactForm = document.getElementById('mainForm');
-    if (contactForm) {
+    // 5. Форма и Капча
+    const form = document.getElementById('mainForm');
+    if (form) {
         const captchaLabel = document.getElementById('captchaLabel');
         const captchaInput = document.getElementById('captchaInput');
-        
-        let n1 = Math.floor(Math.random() * 10);
-        let n2 = Math.floor(Math.random() * 5);
-        let correctAnswer = n1 + n2;
-
+        let n1 = Math.floor(Math.random() * 10), n2 = Math.floor(Math.random() * 5);
+        let ans = n1 + n2;
         if (captchaLabel) captchaLabel.innerText = `Сколько будет ${n1} + ${n2}?`;
 
-        contactForm.addEventListener('submit', (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
-            if (parseInt(captchaInput.value) !== correctAnswer) {
-                alert('Ошибка проверки! Пожалуйста, решите пример.');
+            if (parseInt(captchaInput.value) !== ans) {
+                alert('Капча введена неверно!');
                 return;
             }
-
-            const btn = contactForm.querySelector('button');
-            btn.disabled = true;
+            const btn = form.querySelector('button');
             btn.innerText = 'Отправка...';
-
             setTimeout(() => {
-                contactForm.reset();
+                form.reset();
                 document.getElementById('formSuccess').style.display = 'block';
-                btn.innerText = 'Заявка отправлена';
+                btn.innerText = 'Отправлено';
             }, 1500);
         });
     }
 
-    // 6. Плавное появление элементов при скролле (через CSS классы)
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+    // 6. Cookie Popup
+    const cp = document.getElementById('cookiePopup');
+    const ca = document.getElementById('acceptCookies');
+    if (cp && !localStorage.getItem('trilo_cookies')) {
+        setTimeout(() => cp.classList.add('active'), 2500);
+    }
+    if (ca) {
+        ca.addEventListener('click', () => {
+            localStorage.setItem('trilo_cookies', 'true');
+            cp.classList.remove('active');
         });
-    }, observerOptions);
-
-    document.querySelectorAll('.section').forEach(section => observer.observe(section));
+    }
 });

@@ -581,3 +581,78 @@ h4 {
         gap: 30px;
     }
 }
+/* ... Предыдущие стили ... */
+
+/* ФИКС: Чтобы слова не разрывались при анимации */
+.hero__title .word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Адаптивность Хедера: Прячем кнопку на мобильных */
+@media (max-width: 992px) {
+    .desktop-cta {
+        display: none;
+        /* Кнопка исчезает из хедера */
+    }
+
+    .burger {
+        display: flex;
+    }
+}
+
+/* Стили для мобильной кнопки внутри меню */
+.mobile-cta {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Cookie Popup Стили */
+.cookie-popup {
+    position: fixed;
+    bottom: -100%;
+    left: 20px;
+    right: 20px;
+    background: var(--bg-surface);
+    padding: 20px;
+    border-radius: 4px;
+    border-left: 4px solid var(--color-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 3000;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cookie-popup.active {
+    bottom: 20px;
+}
+
+.cookie-popup__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .cookie-popup__content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Стилизация секций (Platform & Innovations) */
+.platform__img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 15px 15px 0 var(--color-accent);
+}
+
+.innovations__banner {
+    background: var(--bg-surface);
+    padding: 50px;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    text-align: center;
+}
