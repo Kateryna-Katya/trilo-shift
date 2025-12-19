@@ -1,56 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/trilo-shift/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilo-Shift | Инновационный консалтинг</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
     <script type="module" crossorigin src="/trilo-shift/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/trilo-shift/assets/styles-guStct1H.css">
+    <link rel="stylesheet" crossorigin href="/trilo-shift/assets/styles-BO2t6Qwu.css">
   </head>
   <body>
-    <header class="header">
-  <div class="container">
+  
+    <div class="mobile-overlay" id="mobileMenu">
+  <nav class="mobile-nav">
+    <a href="#hero" class="mobile-link">Главная</a>
+    <a href="#platform" class="mobile-link">Платформа</a>
+    <a href="#benefits" class="mobile-link">Выгоды</a>
+    <a href="#innovations" class="mobile-link">Инновации</a>
+    <a href="#blog" class="mobile-link">Блог</a>
+    <a href="#contact" class="btn btn--primary mobile-btn">Начать сейчас</a>
+  </nav>
+</div>
+<header class="header">
+  <div class="container header__container">
+    <a href="/" class="logo">
+      <span class="logo__icon"></span>
+      <span class="logo__text">TRILO<span>SHIFT</span></span>
+    </a>
+
     <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
+      <ul class="nav__list">
+        <li><a href="#hero" class="nav__link">Главная</a></li>
+        <li><a href="#platform" class="nav__link">Платформа</a></li>
+        <li><a href="#benefits" class="nav__link">Выгоды</a></li>
+        <li><a href="#innovations" class="nav__link">Инновации</a></li>
+        <li><a href="#blog" class="nav__link">Блог</a></li>
       </ul>
     </nav>
+
+    <div class="header__actions">
+      <a href="#contact" class="btn btn--primary">Начать сейчас</a>
+      <button class="burger" id="burger">
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-
-    <main>
+    <main id="main-content">
       <!-- Loads the specified .html file -->
-      
+      <section class="hero" id="hero">
+    <div class="container">
+        <div class="hero__content">
+            <h1 class="hero__title split-text">Технологии нового поколения для вашего успеха</h1>
+            <p class="hero__subtitle">Инновационная платформа для управления активами и консалтинга, доступная теперь в
+                Англии и странах ЕС.</p>
+            <div class="hero__btns">
+                <a href="#contact" class="btn btn--primary">Запросить доступ</a>
+                <a href="#platform" class="btn btn--outline">Узнать детали</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero__bg-element"></div>
+</section>
+<section class="section platform" id="platform">
+    <div class="container platform__grid">
+        <div class="platform__image-wrapper">
+            <img src="/trilo-shift/assets/one-C3dzppeb.jpg" alt="Analytics" class="platform__img">
+            <div class="platform__experience">
+                <span class="exp-number">12+</span>
+                <span class="exp-text">лет опыта в EU</span>
+            </div>
+        </div>
+        <div class="platform__content">
+            <span class="section__label">Инновационная инфраструктура</span>
+            <h2 class="section__title">Технологии нового поколения</h2>
+            <p class="section__description">Мы создали экосистему, где AI-инструменты для реальных задач интегрированы в
+                классический консалтинг. Это позволяет переосмыслить подход к развитию вашего проекта.</p>
+            <ul class="platform__features">
+                <li><i data-lucide="zap"></i> Быстрый старт за 2 минуты</li>
+                <li><i data-lucide="globe"></i> Доступно во всех странах ЕС</li>
+                <li><i data-lucide="shield"></i> Юридическая чистота (UK Law)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section class="section benefits" id="benefits">
+    <div class="container">
+        <div class="section__header section__header--center">
+            <h2 class="section__title">Почему выбирают нас</h2>
+        </div>
+        <div class="benefits__grid">
+            <div class="benefit-card">
+                <i data-lucide="trending-up"></i>
+                <h3>Стратегия роста</h3>
+                <p>Практики, применимые уже сегодня для масштабирования вашего проекта.</p>
+            </div>
+            <div class="benefit-card">
+                <i data-lucide="shield-check"></i>
+                <h3>Надежность</h3>
+                <p>Проверенный партнер с регистрацией в Лондоне и полной юридической прозрачностью.</p>
+            </div>
+            <div class="benefit-card">
+                <i data-lucide="zap"></i>
+                <h3>AI Инновации</h3>
+                <p>Автоматизация процессов и использование алгоритмов нового поколения.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section innovations" id="innovations">
+    <div class="container">
+        <div class="innovations__banner">
+            <div class="innovations__info">
+                <h2 class="innovations__h">Программа пассивного дохода 2025</h2>
+                <p>Получите доступ к платформе года и оцените перспективы проекта уже сегодня. Пошаговый путь, понятный
+                    каждому.</p>
+            </div>
+            <a href="#contact" class="btn btn--white">Запросить доступ</a>
+        </div>
+    </div>
+</section>
+
+<section class="section blog" id="blog">
+    <div class="container">
+        <div class="section__header section__header--center">
+            <h2 class="section__title">Экспертный блог</h2>
+        </div>
+        <div class="blog__grid">
+            <article class="blog-card" data-aos="fade-up">
+                <div class="blog-card__bg" style="background-image: url('/trilo-shift/assets/two-BX1VPM8p.jpg');"></div>
+                <div class="blog-card__overlay">
+                    <div class="blog-card__content">
+                        <span class="blog-card__tag">Стратегия</span>
+                        <h3 class="blog-card__title">Как AI меняет правила игры в Англии</h3>
+                        <p class="blog-card__description">Подробный разбор того, как автоматизация влияет на
+                            прибыльность малого бизнеса в Лондоне.</p>
+                        <a href="#contact" class="blog-card__btn">Читать статью</a>
+                    </div>
+                </div>
+            </article>
+            <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="blog-card__bg" style="background-image: url('/trilo-shift/assets/three-CZY5LmvY.jpg');"></div>
+                <div class="blog-card__overlay">
+                    <div class="blog-card__content">
+                        <span class="blog-card__tag">Финансы</span>
+                        <h3 class="blog-card__title">Пассивный доход: мифы и реальность</h3>
+                        <p class="blog-card__description">Практики, применимые уже сегодня для тех, кто хочет построить
+                            стабильную карьеру.</p>
+                        <a href="#contact" class="blog-card__btn">Читать статью</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="contact__wrapper">
+            <div class="contact__info">
+                <h2 class="section__title">Бесплатная консультация</h2>
+                <p>Оставьте заявку, и наш эксперт свяжется с вами в течение 15 минут.</p>
+            </div>
+            <form class="contact__form" id="mainForm">
+                <div class="form__group">
+                    <input type="text" id="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form__group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form__group">
+                    <input type="tel" id="phone" placeholder="Телефон (только цифры)" required pattern="[0-9+]+">
+                </div>
+                <div class="form__captcha">
+                    <label id="captchaLabel">Сколько будет 5 + 3?</label>
+                    <input type="number" id="captchaInput" required>
+                </div>
+                <label class="form__checkbox">
+                    <input type="checkbox" required checked>
+                    <span>Я согласен с политикой конфиденциальности</span>
+                </label>
+                <button type="submit" class="btn btn--primary btn--full">Отправить запрос</button>
+                <div id="formSuccess" class="form-message">Сообщение успешно отправлено!</div>
+            </form>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
+  <div class="container footer__grid">
+    <div class="footer__col footer__col--main">
+      <div class="logo logo--footer">
+        <span class="logo__text">TRILO<span>SHIFT</span></span>
+      </div>
+      <p class="footer__tagline">Технологии, которые работают на вас. Платформа года для стратегического развития в
+        Европе.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__label">Навигация</h4>
+      <ul class="footer__links">
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#platform">О платформе</a></li>
+        <li><a href="#benefits">Преимущества</a></li>
+        <li><a href="#blog">Статьи</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__label">Юридический отдел</h4>
+      <ul class="footer__links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__label">Контакты в Лондоне</h4>
+      <ul class="footer__info">
+        <li>
+          <i data-lucide="mail"></i>
+          <a href="mailto:team@trilo-shift.org">team@trilo-shift.org</a>
+        </li>
+        <li>
+          <i data-lucide="phone"></i>
+          <a href="tel:+442079460958">+44 20 7946 0958</a>
+        </li>
+        <li>
+          <i data-lucide="map-pin"></i>
+          <span>30 St Mary Axe, London EC3A 8BF, UK</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__copyright">
+    <div class="container">
+      <p>&copy; 2025 Trilo-Shift. Предложение активно только в странах ЕС и Англии.</p>
+    </div>
   </div>
 </footer>
 
+    
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
 
   </body>
 </html>
