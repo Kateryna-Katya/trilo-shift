@@ -757,3 +757,144 @@ h4 {
         font-size: 28px;
     }
 }
+/* Глобальные переменные для хедера */
+:root {
+  --header-height: 90px;
+  --header-scroll-height: 70px;
+}
+
+/* Header Base */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+}
+
+/* Эффект при скролле */
+.header--scrolled {
+  height: var(--header-scroll-height);
+  background: rgba(51, 65, 85, 0.85); /* Slate-700 с прозрачностью */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Nav Desktop */
+.nav__list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+
+.nav__link:hover {
+  color: var(--color-accent);
+}
+
+/* Burger Button */
+.burger {
+  display: none; /* Скрыт на десктопе */
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.burger__line {
+  width: 28px;
+  height: 2px;
+  background: var(--color-accent);
+  transition: var(--transition);
+}
+
+/* Burger Active State */
+.burger.active .burger__line:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.burger.active .burger__line:nth-child(2) { transform: rotate(-45deg) translate(0px, -1px); }
+
+/* Mobile Overlay */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-surface);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-overlay.active {
+  right: 0;
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+
+.mobile-nav__link {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  color: var(--color-text-main);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+/* АДАПТИВНОСТЬ: Скрытие кнопки */
+@media (max-width: 992px) {
+  .nav {
+      display: none; /* Прячем основное меню */
+  }
+
+  .desktop-cta {
+      display: none !important; /* Прячем кнопку в шапке */
+  }
+
+  .burger {
+      display: flex; /* Показываем бургер */
+  }
+
+  .mobile-cta {
+      display: block;
+      margin-top: 40px;
+      width: 220px;
+      text-align: center;
+  }
+}
+
+@media (min-width: 993px) {
+  .mobile-cta {
+      display: none;
+  }
+}
